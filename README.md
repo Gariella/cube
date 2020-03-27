@@ -1,37 +1,77 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/Gariella/tiddler/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Gariella/tiddler/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>魔方/立方体</title>
+		<style type="text/css">
+			body{
+				perspective: 1000px;	/* 透视眼 */
+			}
+			.cube{
+				width:200px;
+				height: 200px;
+				margin:200px auto;
+				position:relative;	/* 相对定位*/
+				
+				/* 设置transform-style:保留子元素3D效果 */
+				transform-style: preserve-3d;
+				transform: rotate3d(1,1,1,0deg);
+				transition: all 5s;
+			}
+			.cube:hover{
+				transform:rotate3d(1,1,1,720deg);
+			}
+			.page{
+				width:200px;
+				height: 200px;
+				position: absolute;	/* 绝对定位 */
+				left:0;
+				top:0;
+				/* 设定透明的 */
+				opacity: 0.6;
+			}
+			
+			.front{
+				background-image:url(img/lisa1.jpg);
+				background-size: 100% auto;
+				transform: translateZ(100px);
+			}
+			.back{
+				background-image:url(img/lisa2.jpg);
+				background-size: 100% auto;
+				transform: translateZ(-100px);
+			}
+			.right{
+				background-image:url(img/lisa3.jpg);
+				background-size: 100% auto;
+				transform: rotateY(90deg) translateZ(100px);
+			}
+			.left{
+				background-image:url(img/lisa4.jpg);
+				background-size: 100% auto;
+				transform: rotateY(-90deg) translateZ(100px);
+			}
+			.top{
+				background-image:url(img/lisa5.jpg);
+				background-size: 100% auto;
+				transform: rotateX(90deg) translateZ(100px);
+			}
+			.bottom{
+				background-image:url(img/lisa6.jpg);
+				background-size: 100% auto;
+				transform: rotateX(-90deg) translateZ(100px);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="cube">
+			<div class="page front"></div>
+			<div class="page back"></div>
+			<div class="page left"></div>
+			<div class="page right"></div>
+			<div class="page top"></div>
+			<div class="page bottom"></div>
+		</div>
+	</body>
+</html>
